@@ -3,7 +3,7 @@
 
 This project shows how you can build a react native application with navigation feature by using [React Native Navigation](https://github.com/wix/react-native-navigation).
 
-This is the demo [video](https://drive.google.com/drive/my-drive) for the application.
+This is the demo [video](https://www.youtube.com/watch?v=MJgC4hW9XzQ) for the application.
 
 
 ## Screenshots
