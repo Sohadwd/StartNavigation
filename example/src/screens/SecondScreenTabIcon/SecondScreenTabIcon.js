@@ -1,29 +1,31 @@
-import React, { Component } from "react";
-import { View, Text } from "react-native";
+import React, {Component} from "react";
+import {Text, View} from "react-native";
 
-class FirstScreenTabIcon extends Component {
-  constructor(props) {
-    super(props);
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
-  }
-
-  onNavigatorEvent = event => {
-    if (event.type === "NavBarButtonPress") {
-      if (event.id === "sideDrawerToggle") {
-        this.props.navigator.toggleDrawer({
-          side: "left"
-        });
-      }
+class SecondScreenTabIcon extends Component {
+    constructor(props) {
+        super(props);
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
     }
-  };
 
-  render() {
-    return (
-      <View>
-        <Text> Welcome from SECOND SECREEN TAB ICON </Text>
-      </View>
-    );
-  }
+    onNavigatorEvent = event => {
+        if (event.type === "NavBarButtonPress") {
+            if (event.id === "sideDrawerToggle") {
+                this.props.navigator.toggleDrawer({
+                    side: "left"
+                });
+            }
+        }
+    };
+
+    render() {
+        const {test} = this.props;
+
+        return (
+            <View style={{ alignItems: 'center'}}>
+                <Text> You are in {test} </Text>
+            </View>
+        );
+    }
 }
 
-export default FirstScreenTabIcon;
+export default SecondScreenTabIcon;

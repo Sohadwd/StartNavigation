@@ -1,56 +1,44 @@
 import {Navigation} from "react-native-navigation";
 import {Provider} from "react-redux";
 import AuthScreen from "./src/screens/Home/Home";
-import startTabs from "./src/screens/MainTabs/startMainTabs";
-import SecondScreen from "./src/screens/SecondScreen/SecondScreen";
 import SideDrawer from "./src/screens/SideDrawer/SideDrawer";
-import FirstScreenTabIcon from "./src/screens/FirstScreenTabIcon/FirstScreenTabIcon";
-import SecondScreenTabIcon from "./src/screens/SecondScreenTabIcon/SecondScreenTabIcon";
 import configureStore from "./src/store/configureStore";
+import React from "react";
+import {APP_NAME_PREFIX} from "./src/utilis/constant";
+import {registerScreens} from "./src/screens";
 
 const store = configureStore();
 
-//Register Screen
-Navigation.registerComponent(
-    "awesome-places.AuthScreen",
+/**
+ * default navigator style
+ * @type {{statusBarColor: string, statusBarTextColorScheme: string, navigationBarColor: string, navBarBackgroundColor: string, navBarTextColor: string, navBarButtonColor: string, tabBarButtonColor: string, tabBarSelectedButtonColor: string, tabBarBackgroundColor: string, topBarElevationShadowEnabled: boolean, navBarHideOnScroll: boolean, tabBarHidden: boolean, drawUnderTabBar: boolean}}
+ */
+export const navigatorStyle = {
+    statusBarColor: '#3F51B5',
+    statusBarTextColorScheme: 'light',
+    navigationBarColor: 'black',
+    navBarTextColor: 'white',
+    navBarButtonColor: 'white',
+    tabBarButtonColor: 'red',
+    tabBarSelectedButtonColor: 'red',
+    tabBarBackgroundColor: 'white',
+    topBarElevationShadowEnabled: false,
+    navBarHideOnScroll: true,
+    tabBarHidden: true,
+    drawUnderTabBar: true,
+    navBarBackgroundColor: "#3f51b5",
 
-    () => AuthScreen,
-    store,
-    Provider
-);
+};
 
-Navigation.registerComponent(
-    "awesome-places.SecondScreen",
-    () => SecondScreen,
-    store,
-    Provider
-);
-Navigation.registerComponent(
-    "awesome-places.startTabs",
-    () => startTabs,
-    store,
-    Provider
-);
-Navigation.registerComponent("awesome-places.SideDrawer", () => SideDrawer);
 
-Navigation.registerComponent(
-    "awesome-places.FirstScreenTabIcon",
-    () => FirstScreenTabIcon,
-    store,
-    Provider
-);
-Navigation.registerComponent(
-    "awesome-places.SecondScreenTabIcon",
-    () => SecondScreenTabIcon,
-    store,
-    Provider
-);
+registerScreens(store, Provider);
+
 
 //start the App
 Navigation.startSingleScreenApp({
     screen: {
         // AuthScreen
-        screen: "awesome-places.AuthScreen",
+        screen: APP_NAME_PREFIX + "AuthScreen",
 
         navigatorButtons: {
             leftButtons: [
@@ -70,7 +58,7 @@ Navigation.startSingleScreenApp({
     },
     drawer: {
         left: {
-            screen: "awesome-places.SideDrawer"
+            screen: APP_NAME_PREFIX + "SideDrawer"
         }
     }
 });

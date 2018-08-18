@@ -1,8 +1,11 @@
 import React, {Component} from "react";
-import {View, Text, ImageBackground, StyleSheet, Image} from "react-native";
+import {Image, ImageBackground, StyleSheet, Text, View} from "react-native";
 import {Button} from "native-base";
 import {Fonts} from "../../utilis/Fonts";
-import Icon from "react-native-vector-icons/Ionicons";
+import {navigatorStyle} from "../../../App";
+import {APP_NAME_PREFIX} from "../../utilis/constant";
+import SecondScreen from "../SecondScreen/SecondScreen";
+import SideDrawer from "../SideDrawer/SideDrawer";
 
 class AuthScreen extends Component {
     constructor(props) {
@@ -22,7 +25,7 @@ class AuthScreen extends Component {
 
     GoSecondScreen = () => {
         this.props.navigator.push({
-            screen: "awesome-places.SecondScreen",
+            screen: APP_NAME_PREFIX + "SecondScreen",
             title: "Navigation",
             navigatorButtons: {
                 leftButtons: [
@@ -33,17 +36,10 @@ class AuthScreen extends Component {
                     }
                 ]
             },
-            navigatorStyle: {
-                navBarBackgroundColor: "#3F51B5",
-                navBarNoBorder: true,
-                navBarButtonColor: "white",
-                navBarTextColor: "white",
-                navBarTextFontSize: 30,
-                navBarTextFontFamily: "Arial Rounded MT Bold"
-            },
+            navigatorStyle,
             drawer: {
                 left: {
-                    screen: "awesome-places.SideDrawer"
+                    screen: APP_NAME_PREFIX + "SideDrawer"
                 }
             }
         });
@@ -63,7 +59,7 @@ class AuthScreen extends Component {
                         onPress={this.GoSecondScreen}
                         style={styles.orderNowButton}
                     >
-                        <Text style={styles.textOrderButton}>Second Screen</Text>
+                        <Text style={styles.textOrderButton}>Go To Tabs Screen</Text>
                     </Button>
                     <View style={styles.buttonGroup}/>
                 </View>
@@ -103,7 +99,7 @@ const styles = StyleSheet.create({
         color: "#FFFFFF",
         fontSize: 30,
         fontWeight: "bold",
-        fontFamily: Fonts.Amiritalic
+        fontFamily: Fonts.AmiriItalic
     },
 
 });

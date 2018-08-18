@@ -1,11 +1,10 @@
 import React, {Component} from "react";
 import {Text, View} from "react-native";
 
-class FirstScreenTabIcon extends Component {
+class FourthScreenTabIcon extends Component {
     constructor(props) {
         super(props);
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
-        console.log(this.props);
     }
 
     onNavigatorEvent = event => {
@@ -20,6 +19,7 @@ class FirstScreenTabIcon extends Component {
 
     render() {
         const {test} = this.props;
+
         return (
             <View style={{alignItems: 'center'}}>
                 <Text> You are in {test} </Text>
@@ -28,4 +28,4 @@ class FirstScreenTabIcon extends Component {
     }
 }
 
-export default FirstScreenTabIcon;
+export default FourthScreenTabIcon;
